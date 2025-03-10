@@ -31,11 +31,13 @@ Due to the large size of the ResNet50V2 model and presentation file, they are ho
 - **Presentation:** [Download Here](https://drive.google.com/file/d/1qpbPCvsmpaZzQkDsFlibKUy8XOAGepJQ/view?usp=sharing)
 
 
-## 📂 Project Structure  
-📦 Deep Learning Animal Classifier
-│-- 📜 README.md - Project documentation
-│-- 📜 Homepage.py - Main script for running the app
-│-- 📜 dl-image-classification-final.ipynb - Jupyter Notebook with training code
-│-- 📜 CNN.h5 - Trained CNN model
-│-- 📜 MobileNet.h5 - Trained MobileNet model
-│-- 📂 test_image/ - Sample images for testing
+## 📂 Project Structure
+
+📦 **Deep Learning Animal Classifier**  
+│-- 📜 `README.md` - Project documentation  
+│-- 📜 `Homepage.py` - Main script for running the app  
+│-- 📜 `dl-image-classification-final.ipynb` - Jupyter Notebook with training code  
+│-- 📜 `CNN.h5` - Trained CNN model  
+│-- 📜 `MobileNet.h5` - Trained MobileNet model  
+│-- 📂 `test_image/` - Sample images for testing  
+
