@@ -4,7 +4,7 @@ This project implements a deep learning-based image classification model to clas
 ## 🚀 Features
 - **Custom CNN Model** trained for image classification
 - **MobileNet Transfer Learning** model for improved accuracy
-- **Jupyter Notebook for Model Training (`dl-image-classification-final.ipynb`)**
+- **Jupyter Notebook for Model Training (`Deep Learning Animal classifier.ipynb`)**
 - **Saved Models (`CNN.h5`, `MobileNet.h5`)**
 - **Python Homepage (`Homepage.py`) for Model Inference**
 - **Test Images (`test_image` folder)**
@@ -36,7 +36,7 @@ Due to the large size of the ResNet50V2 model and presentation file, they are ho
 📦 **Deep Learning Animal Classifier**  
 │-- 📜 `README.md` - Project documentation  
 │-- 📜 `Homepage.py` - Main script for running the app  
-│-- 📜 `dl-image-classification-final.ipynb` - Jupyter Notebook with training code  
+│-- 📜 `Deep Learning Animal classifier.ipynb` - Jupyter Notebook with training code  
 │-- 📜 `CNN.h5` - Trained CNN model  
 │-- 📜 `MobileNet.h5` - Trained MobileNet model  
 │-- 📂 `test_image/` - Sample images for testing  
