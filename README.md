@@ -1,0 +1,2 @@
+- The Resnet50V2 is too big so i uploded to the drive here https://drive.google.com/file/d/1BfKY86KVhM5c_DJO7kVbWx8MA7WuYf0v/view?usp=sharing
+- also for the presntation here https://drive.google.com/file/d/1qpbPCvsmpaZzQkDsFlibKUy8XOAGepJQ/view?usp=sharing
