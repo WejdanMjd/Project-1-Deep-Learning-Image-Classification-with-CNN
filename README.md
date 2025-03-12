@@ -1,13 +1,24 @@
-# Animal Classification Using Deep Learning 
+# Animal Classification Using Deep Learning 🦁  
 
 This project implements a deep learning-based image classification model to classify animals into various categories using **Convolutional Neural Networks (CNN)**, **ResNet50V2**, and **MobileNet** for feature extraction.
+
+## 📌 Dataset  
+
+We used the **Animals-10 Dataset**, a publicly available dataset on **Kaggle** that contains images of 10 different animal species.  
+
+📌 **Dataset Source:** [Animals-10 Dataset on Kaggle](https://www.kaggle.com/datasets/alessiocorrado99/animals10)  
+
+### 📂 Dataset Overview  
+
+The dataset consists of **~26,000 images** categorized into **10 animal classes**, originally labeled in **Italian**.  
+We renamed them to **English** for consistency.  
+
 ## 🚀 Features
 - **Custom CNN Model** trained for image classification
 - **MobileNet Transfer Learning** model for improved accuracy
-- **Jupyter Notebook for Model Training (`Deep Learning Animal classifier.ipynb`)**
-- **Saved Models (`CNN.h5`, `MobileNet.h5`)**
-- **Python Homepage (`Homepage.py`) for Model Inference**
-- **Test Images (`test_image` folder)**
+- **ResNet50V2** for high-performance classification
+- **Multi-class classification** with 10 animal categories
+- Handles a dataset of **26,000+ images**
 
 ## 📊 Model Performance  
 We trained three different models on the dataset and obtained the following accuracies:  
