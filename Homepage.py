@@ -1,40 +1,29 @@
-import streamlit as st  # استيراد مكتبة Streamlit لبناء واجهة المستخدم
-import tensorflow as tf  # استيراد TensorFlow لاستخدام النماذج المدربة
-from PIL import Image  # استيراد PIL لتحميل ومعالجة الصور
-import numpy as np  # استيراد NumPy للعمل مع المصفوفات
-import matplotlib.pyplot as plt  # استيراد مكتبة matplotlib للرسم البياني
+import streamlit as st  
+import tensorflow as tf  
+from PIL import Image  
+import numpy as np  
+import matplotlib.pyplot as plt  
 
 
-# تحميل النماذج المدربة (استبدل بالمسار الصحيح للنماذج)
 model_cnn1 = tf.keras.models.load_model("C:/Users/HUAWI/Multipage/Models/Model1.h5")
 model_cnn2 = tf.keras.models.load_model("C:/Users/HUAWI/Multipage/Models/Model2.h5")
 model_cnn3 = tf.keras.models.load_model("C:/Users/HUAWI/Multipage/Models/Model3.h5")
 
-# قائمة الأسماء المحتملة للفئات (تأكد من أنها تتوافق مع مخرجات النموذج)
 class_names = ['butterfly', 'cat', 'chicken', 'cow', 'dog', 
                'elephant', 'horse', 'sheep', 'spider', 'squirrel']
 
-# دالة التنبؤ
 def predict(image, model):
-    # تحويل الصورة إلى مصفوفة وتقسيمها على 255 لتطبيع القيم بين 0 و 1
     img_array = np.array(image) / 255.0
-    # تغيير حجم الصورة إلى الأبعاد المطلوبة من قبل النموذج
     img_array = tf.image.resize(img_array, [model.input_shape[1], model.input_shape[2]])
-    # إضافة بعد جديد ليصبح لدينا حجم الدفعة (batch size)
     img_array = np.expand_dims(img_array, axis=0)
     
-    # الحصول على التنبؤات من النموذج
     prediction = model.predict(img_array)
-    # استخراج الفئة ذات الاحتمال الأعلى
     class_id = np.argmax(prediction)
-    return class_id, prediction  # إرجاع الفئة والاحتمالات
+    return class_id, prediction  
 
-# دالة الصفحة الرئيسية
 def run_homepage():
-    # عنوان الصفحة
     st.title("Welcome to the Image Classification App using AI")
     
-    # وصف موجز للتطبيق
    
     st.write("**Neural Vision:**")
     st.write("Ranwah sadik")
@@ -52,66 +41,59 @@ def run_homepage():
     st.write(" ")
     st.write("**Choose a model from the sidebar to start**")
     
-    # واجهة المستخدم لاختيار النموذج من الشريط الجانبي
-    # واجهة المستخدم لاختيار النموذج من الشريط الجانبي
+
     page = st.sidebar.selectbox("Choose a model", ["Mobilenet Model", "ResNet Model", "CNN Model"])
 
 
-    # رفع الصورة من المستخدم
     uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)  # فتح الصورة
-        st.image(image, caption="Uploaded Image", use_column_width=True)  # عرض الصورة المرفوعة
+        image = Image.open(uploaded_file) 
+        st.image(image, caption="Uploaded Image", use_column_width=True)  
         
-        # التنبؤ باستخدام النموذج المحدد
         if page == "Mobilenet Model":
             st.title("CNN Model 1")
-            class_id, probabilities = predict(image, model_cnn1)  # التنبؤ باستخدام النموذج الأول
-            st.write(f"Predicted class: {class_names[class_id]}")  # عرض الفئة المتوقعة
+            class_id, probabilities = predict(image, model_cnn1)  
+            st.write(f"Predicted class: {class_names[class_id]}")  
             
 
-            # رسم البياني
             fig, ax = plt.subplots()
-            ax.bar(class_names, probabilities[0])  # رسم الأعمدة
-            ax.set_xlabel('Class')  # تسميات المحور الأفقي
-            ax.set_ylabel('Probability')  # تسميات المحور الرأسي
-            ax.set_title('Class Probabilities')  # عنوان الرسم البياني
-            plt.xticks(rotation=90)  # تدوير التسميات لتكون أكثر وضوحًا
-            st.pyplot(fig)  # عرض الرسم البياني في Streamlit
+            ax.bar(class_names, probabilities[0])  
+            ax.set_xlabel('Class')  
+            ax.set_ylabel('Probability')  
+            ax.set_title('Class Probabilities')  
+            plt.xticks(rotation=90)  
+            st.pyplot(fig)  
 
         elif page == "ResNet Model":
             st.title("CNN Model 2")
-            class_id, probabilities = predict(image, model_cnn2)  # التنبؤ باستخدام النموذج الثاني
-            st.write(f"Predicted class: {class_names[class_id]}")  # عرض الفئة المتوقعة
+            class_id, probabilities = predict(image, model_cnn2)  
+            st.write(f"Predicted class: {class_names[class_id]}")  
             
 
-            # رسم البياني
             fig, ax = plt.subplots()
-            ax.bar(class_names, probabilities[0])  # رسم الأعمدة
-            ax.set_xlabel('Class')  # تسميات المحور الأفقي
-            ax.set_ylabel('Probability')  # تسميات المحور الرأسي
-            ax.set_title('Class Probabilities')  # عنوان الرسم البياني
-            plt.xticks(rotation=90)  # تدوير التسميات لتكون أكثر وضوحًا
-            st.pyplot(fig)  # عرض الرسم البياني في Streamlit
+            ax.bar(class_names, probabilities[0]) 
+            ax.set_xlabel('Class')  
+            ax.set_ylabel('Probability')  
+            ax.set_title('Class Probabilities')  
+            plt.xticks(rotation=90)  
+            st.pyplot(fig)  
 
 
         elif page == "CNN Model":
            st.title("CNN Model 3")
-           class_id, probabilities = predict(image, model_cnn3)  # التنبؤ باستخدام النموذج الثالث
-           st.write(f"Predicted class: {class_names[class_id]}")  # عرض الفئة المتوقعة
+           class_id, probabilities = predict(image, model_cnn3)  
+           st.write(f"Predicted class: {class_names[class_id]}")  
            
 
 
-            # رسم البياني
            fig, ax = plt.subplots()
-           ax.bar(class_names, probabilities[0])  # رسم الأعمدة
-           ax.set_xlabel('Class')  # تسميات المحور الأفقي
-           ax.set_ylabel('Probability')  # تسميات المحور الرأسي
-           ax.set_title('Class Probabilities')  # عنوان الرسم البياني
-           plt.xticks(rotation=90)  # تدوير التسميات لتكون أكثر وضوحًا
-           st.pyplot(fig)  # عرض الرسم البياني في Streamlit
+           ax.bar(class_names, probabilities[0])  
+           ax.set_xlabel('Class')  
+           ax.set_ylabel('Probability')  
+           ax.set_title('Class Probabilities')  
+           plt.xticks(rotation=90)  
+           st.pyplot(fig)  
 
-# تشغيل التطبيق
 if __name__ == "__main__":
-    run_homepage()  # استدعاء دالة الصفحة الرئيسية لتشغيل التطبيق
+    run_homepage()  
