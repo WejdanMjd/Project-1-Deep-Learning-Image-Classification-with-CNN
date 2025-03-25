@@ -54,6 +54,6 @@ Due to the large size of the ResNet50V2 model and presentation file, they are ho
 
 ## Team members
 - Ranwah Sadik
-- Razan Alkamisi
+- Razan Alkhamisi
 - Wejdan Alharthi
 
